@@ -18,6 +18,7 @@
 
   .ut{font-family:'Black Han Sans',sans-serif;font-size:clamp(1.8rem,5.5vw,3rem);color:#ff4444;text-shadow:0 0 35px rgba(255,60,60,.3)}
   .us{color:rgba(255,255,255,.4);font-size:1rem}
+  .disclaimer{color:rgba(255,255,255,.25);font-size:.72rem;max-width:min(290px,82vw);text-align:center;line-height:1.4}
   .dz{
     width:min(290px,82vw);height:250px;border:3px dashed rgba(255,60,60,.28);border-radius:18px;
     display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
@@ -41,7 +42,6 @@
   .gobtn.sh{display:block;animation:fi .3s ease}
   .gobtn:hover{transform:translateY(-2px);box-shadow:0 8px 38px rgba(255,50,50,.5)}
 
-  /* GAME */
   .gm{display:none;flex-direction:column;align-items:center}.gm.on{display:flex;animation:fi .4s ease}
   .gt{font-family:'Black Han Sans',sans-serif;font-size:clamp(1.2rem,3vw,1.8rem);color:#ff4444;margin-bottom:6px}
   .hud{display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap;justify-content:center}
@@ -57,44 +57,30 @@
   .fi2{width:100%;height:100%;object-fit:cover;display:block;transition:transform .06s,filter .4s}
   .ly{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;border-radius:14px}
 
-  /* Face landmark debug dots (hidden by default) */
-  .ldot{position:absolute;width:6px;height:6px;border-radius:50%;pointer-events:none;z-index:30;opacity:0}
-
-  /* Part label on hit */
   .part-label{
     position:absolute;pointer-events:none;z-index:25;
     font-family:'Black Han Sans',sans-serif;font-size:1rem;
     padding:3px 10px;border-radius:20px;
     background:rgba(0,0,0,.6);color:#ffd700;
-    animation:plbl .7s ease-out forwards;white-space:nowrap;
+    animation:plbl .5s ease-out forwards;white-space:nowrap;
   }
-  @keyframes plbl{0%{transform:translateY(0) scale(.7);opacity:1}100%{transform:translateY(-50px) scale(1);opacity:0}}
+  @keyframes plbl{0%{transform:translateY(0) scale(.7);opacity:1}100%{transform:translateY(-40px) scale(1);opacity:0}}
 
   .fl{
     position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;border-radius:14px;
-    background:radial-gradient(circle,rgba(255,255,255,.6),transparent 55%);opacity:0;transition:opacity .04s;
+    background:radial-gradient(circle,rgba(255,255,255,.6),transparent 55%);opacity:0;transition:opacity .03s;
   }
   .fl.on{opacity:1}
 
-  .hp{position:absolute;pointer-events:none;z-index:8;font-size:75px;opacity:0;animation:hs .4s ease-out forwards;filter:drop-shadow(0 0 12px rgba(255,0,0,.4))}
-  @keyframes hs{0%{transform:scale(2.2) rotate(-25deg);opacity:.85}25%{transform:scale(1) rotate(8deg);opacity:.65}100%{transform:scale(.7) rotate(0) translateY(-25px);opacity:0}}
+  .fx{position:absolute;pointer-events:none;opacity:0;will-change:transform,opacity}
+  .fx-hand{z-index:8;font-size:70px;filter:drop-shadow(0 0 10px rgba(255,0,0,.3))}
+  .fx-text{z-index:20;font-family:'Black Han Sans',sans-serif;font-size:1.8rem;color:#ff3333;white-space:nowrap;text-shadow:0 0 12px rgba(255,40,40,.7),0 2px 4px rgba(0,0,0,.5)}
+  .fx-star{z-index:15}
+  .fx-blood{z-index:9;border-radius:50%;background:radial-gradient(circle,#cc2222,#880000)}
+  .fx-ring{z-index:7;border:3px solid rgba(255,80,80,.6);border-radius:50%;width:8px;height:8px}
+  .fx-label{z-index:25;font-family:'Black Han Sans',sans-serif;font-size:.9rem;padding:2px 8px;border-radius:16px;background:rgba(0,0,0,.55);color:#ffd700;white-space:nowrap}
 
-  .ir{position:absolute;pointer-events:none;z-index:7;border:3px solid rgba(255,80,80,.65);border-radius:50%;opacity:0;animation:rb .38s ease-out forwards}
-  @keyframes rb{0%{width:8px;height:8px;opacity:.75}100%{width:130px;height:130px;margin-left:-65px;margin-top:-65px;opacity:0;border-width:1px}}
-
-  .bl{position:absolute;pointer-events:none;z-index:9;border-radius:50%;background:radial-gradient(circle,#cc2222,#880000)}
-
-  .ftx{
-    position:absolute;pointer-events:none;z-index:20;
-    font-family:'Black Han Sans',sans-serif;font-size:1.9rem;color:#ff3333;white-space:nowrap;
-    text-shadow:0 0 14px rgba(255,40,40,.75),0 2px 5px rgba(0,0,0,.55);
-    animation:tu .85s ease-out forwards;
-  }
-  @keyframes tu{0%{transform:translateY(0) scale(.55) rotate(-6deg);opacity:1}100%{transform:translateY(-105px) scale(1.25) rotate(4deg);opacity:0}}
-
-  .st{position:absolute;pointer-events:none;z-index:15}
-
-  .sf{position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(255,0,0,.12);pointer-events:none;z-index:100;opacity:0;transition:opacity .04s}
+  .sf{position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(255,0,0,.12);pointer-events:none;z-index:100;opacity:0;transition:opacity .03s}
   .sf.on{opacity:1}
 
   .cb{position:fixed;top:10px;left:50%;transform:translateX(-50%);width:min(250px,68vw);height:22px;border-radius:50px;background:rgba(255,255,255,.03);border:1.5px solid rgba(255,60,60,.22);padding:3px;opacity:0;transition:opacity .3s;z-index:50;overflow:hidden}
@@ -121,17 +107,14 @@
 
   @keyframes hvShk{
     0%,100%{transform:translate(0)}
-    5%{transform:translate(-9px,-7px) rotate(-1.5deg)}
-    10%{transform:translate(8px,6px) rotate(1.2deg)}
-    15%{transform:translate(-7px,5px) rotate(-.8deg)}
-    20%{transform:translate(6px,-8px) rotate(.8deg)}
-    30%{transform:translate(-5px,4px)}
+    5%{transform:translate(-8px,-6px) rotate(-1deg)}
+    15%{transform:translate(7px,5px) rotate(1deg)}
+    25%{transform:translate(-5px,4px)}
     40%{transform:translate(4px,-3px)}
-    55%{transform:translate(-3px,2px)}
-    70%{transform:translate(2px,-1px)}
-    85%{transform:translate(-1px,1px)}
+    60%{transform:translate(-2px,2px)}
+    80%{transform:translate(1px,-1px)}
   }
-  .shk{animation:hvShk .35s ease}
+  .shk{animation:hvShk .25s ease}
 </style>
 </head>
 <body>
@@ -151,6 +134,7 @@
   </div>
   <div class="loading-text" id="loadTxt">🔍 얼굴 인식 중...</div>
   <button class="gobtn" id="go">👊 때리러 가기!</button>
+  <div class="disclaimer">⚠️ 본인 사진 또는 동의를 받은 사진만 사용해주세요.<br>타인의 사진을 무단으로 사용하면 초상권 침해 등 법적 문제가 될 수 있습니다.</div>
 </div>
 
 <!-- GAME -->
@@ -166,8 +150,7 @@
   <div class="fw" id="fw">
     <img class="fi2" id="fi2">
     <canvas class="ly" id="cB" style="mix-blend-mode:multiply"></canvas>
-    <canvas class="ly" id="cS" style="mix-blend-mode:overlay;opacity:.65"></canvas>
-    <canvas class="ly" id="cW" style="opacity:.4"></canvas>
+    <canvas class="ly" id="cS" style="mix-blend-mode:overlay;opacity:.6"></canvas>
     <div class="ly" id="tn" style="background:rgba(150,25,25,0);transition:background .4s;mix-blend-mode:color"></div>
     <div class="fl" id="flx"></div>
     <div class="bd bd1" id="b1"></div><div class="bd bd2" id="b2"></div><div class="bd bd3" id="b3"></div>
@@ -180,156 +163,159 @@
 </div>
 
 <script>
-// ========== FACE DETECTION (face-api.js via TF) ==========
-// We'll use a lightweight approach: use the browser canvas to find face features
-// Since we can't load face-api.js from CDN due to network restrictions,
-// we'll implement manual face landmark estimation based on common proportions
-// OR let the user tap to mark key points.
-// BETTER: Use a simple heuristic face detector using canvas pixel analysis.
-
-// Actually, let's implement a smart approach:
-// We analyze the image to find skin-tone regions and estimate face landmarks.
-
-let faceLandmarks = null; // {leftEye, rightEye, nose, mouth, leftCheek, rightCheek, forehead, chin}
-let imgW, imgH, CW, CH, scaleX, scaleY;
-
-function detectFace(img) {
-  // Create offscreen canvas
-  const c = document.createElement('canvas');
-  const size = 200; // downscale for speed
-  const aspect = img.naturalWidth / img.naturalHeight;
-  c.width = aspect >= 1 ? size : size * aspect;
-  c.height = aspect >= 1 ? size / aspect : size;
-  const cx = c.getContext('2d');
-  cx.drawImage(img, 0, 0, c.width, c.height);
-  const data = cx.getImageData(0, 0, c.width, c.height).data;
-
-  // Find skin-tone pixels
-  const skinMap = [];
-  for (let y = 0; y < c.height; y++) {
-    for (let x = 0; x < c.width; x++) {
-      const i = (y * c.width + x) * 4;
-      const r = data[i], g = data[i+1], b = data[i+2];
-      // Skin tone detection (works for various skin tones)
-      const isSkin = (
-        r > 60 && g > 40 && b > 20 &&
-        r > g && r > b &&
-        Math.abs(r - g) > 10 &&
-        r - b > 15 &&
-        Math.max(r, g, b) - Math.min(r, g, b) > 15
-      ) || (
-        // Darker skin tones
-        r > 45 && g > 30 && b > 15 &&
-        r > b && g > b &&
-        r - b > 5 &&
-        Math.max(r, g, b) - Math.min(r, g, b) > 10 &&
-        Math.max(r, g, b) < 200
-      );
-      if (isSkin) skinMap.push({ x, y });
+// ========== OBJECT POOL (prevents DOM explosion) ==========
+class FxPool{
+  constructor(max){this.max=max;this.pool=[];this.active=0}
+  get(){
+    // Reuse hidden element or create new if under limit
+    for(const el of this.pool){if(el.style.opacity==='0'||el.style.opacity===''){el.style.opacity='0';return el}}
+    if(this.pool.length<this.max){
+      const el=document.createElement('div');
+      el.className='fx';el.style.opacity='0';
+      this.pool.push(el);
+      return el;
     }
+    // Over limit: reuse oldest
+    return this.pool[Math.floor(Math.random()*this.pool.length)];
   }
+}
+const handPool=new FxPool(6);
+const textPool=new FxPool(6);
+const starPool=new FxPool(15);
+const bloodPool=new FxPool(20);
+const ringPool=new FxPool(4);
+const labelPool=new FxPool(4);
 
-  if (skinMap.length < 20) {
-    // Fallback: assume face fills most of the image
-    return defaultLandmarks(img.naturalWidth, img.naturalHeight);
-  }
-
-  // Find bounding box of skin region (largest cluster = face)
-  let minX = Infinity, maxX = 0, minY = Infinity, maxY = 0;
-  // Use top-heavy clustering (face usually in upper portion)
-  const upperSkin = skinMap.filter(p => p.y < c.height * 0.75);
-  const target = upperSkin.length > 30 ? upperSkin : skinMap;
-
-  target.forEach(p => {
-    if (p.x < minX) minX = p.x;
-    if (p.x > maxX) maxX = p.x;
-    if (p.y < minY) minY = p.y;
-    if (p.y > maxY) maxY = p.y;
+function animateFx(el,parent,x,y,cls,content,anim,dur){
+  el.className='fx '+cls;
+  el.textContent=content;
+  el.style.left=x+'px';el.style.top=y+'px';
+  el.style.opacity='1';el.style.transform='';
+  if(!el.parentNode)parent.appendChild(el);
+  requestAnimationFrame(()=>{
+    if(anim.transform)el.style.transition=`all ${dur}ms ease-out`;
+    if(anim.transform)el.style.transform=anim.transform;
+    if(anim.opacity!==undefined)el.style.opacity=anim.opacity;
   });
-
-  const faceW = maxX - minX;
-  const faceH = maxY - minY;
-  const faceCX = (minX + maxX) / 2;
-  const faceCY = (minY + maxY) / 2;
-
-  // Now detect dark regions within face area for eyes
-  // Eyes are typically in the upper 1/3 of the face
-  const eyeRegionTop = minY + faceH * 0.2;
-  const eyeRegionBot = minY + faceH * 0.45;
-  const darkPixels = [];
-
-  for (let y = Math.floor(eyeRegionTop); y < Math.floor(eyeRegionBot); y++) {
-    for (let x = Math.floor(minX); x < Math.floor(maxX); x++) {
-      const i = (y * c.width + x) * 4;
-      const r = data[i], g = data[i+1], b = data[i+2];
-      const brightness = (r + g + b) / 3;
-      if (brightness < 80) darkPixels.push({ x, y, b: brightness });
-    }
-  }
-
-  let leftEyeX, leftEyeY, rightEyeX, rightEyeY;
-
-  if (darkPixels.length > 5) {
-    // Split left/right
-    const leftDark = darkPixels.filter(p => p.x < faceCX);
-    const rightDark = darkPixels.filter(p => p.x >= faceCX);
-
-    const avg = (arr) => {
-      if (arr.length === 0) return null;
-      const sx = arr.reduce((s, p) => s + p.x, 0) / arr.length;
-      const sy = arr.reduce((s, p) => s + p.y, 0) / arr.length;
-      return { x: sx, y: sy };
-    };
-
-    const le = avg(leftDark);
-    const re = avg(rightDark);
-
-    if (le) { leftEyeX = le.x; leftEyeY = le.y; }
-    if (re) { rightEyeX = re.x; rightEyeY = re.y; }
-  }
-
-  // Fallback positions based on face proportions
-  if (!leftEyeX) { leftEyeX = minX + faceW * 0.3; leftEyeY = minY + faceH * 0.33; }
-  if (!rightEyeX) { rightEyeX = minX + faceW * 0.7; rightEyeY = minY + faceH * 0.33; }
-
-  // Scale back to original image coordinates
-  const sx = img.naturalWidth / c.width;
-  const sy = img.naturalHeight / c.height;
-
-  return {
-    leftEye: { x: leftEyeX * sx, y: leftEyeY * sy },
-    rightEye: { x: rightEyeX * sx, y: rightEyeY * sy },
-    nose: { x: faceCX * sx, y: (minY + faceH * 0.55) * sy },
-    mouth: { x: faceCX * sx, y: (minY + faceH * 0.72) * sy },
-    leftCheek: { x: (minX + faceW * 0.15) * sx, y: (minY + faceH * 0.55) * sy },
-    rightCheek: { x: (minX + faceW * 0.85) * sx, y: (minY + faceH * 0.55) * sy },
-    forehead: { x: faceCX * sx, y: (minY + faceH * 0.12) * sy },
-    chin: { x: faceCX * sx, y: (maxY) * sy },
-    bounds: { x: minX * sx, y: minY * sy, w: faceW * sx, h: faceH * sy }
-  };
+  setTimeout(()=>{el.style.opacity='0';el.style.transition=''},dur+50);
 }
 
-function defaultLandmarks(w, h) {
-  const cx = w / 2, cy = h * 0.42;
-  return {
-    leftEye: { x: cx - w * 0.12, y: cy - h * 0.03 },
-    rightEye: { x: cx + w * 0.12, y: cy - h * 0.03 },
-    nose: { x: cx, y: cy + h * 0.07 },
-    mouth: { x: cx, y: cy + h * 0.16 },
-    leftCheek: { x: cx - w * 0.2, y: cy + h * 0.05 },
-    rightCheek: { x: cx + w * 0.2, y: cy + h * 0.05 },
-    forehead: { x: cx, y: cy - h * 0.12 },
-    chin: { x: cx, y: cy + h * 0.25 },
-    bounds: { x: w * 0.2, y: h * 0.1, w: w * 0.6, h: h * 0.7 }
+// ========== AUDIO (single context, reuse nodes) ==========
+let audioCtx;
+function getAC(){if(!audioCtx)audioCtx=new(window.AudioContext||window.webkitAudioContext)();return audioCtx}
+
+// Pre-create noise buffer once
+let noiseBuffer=null;
+function getNoise(){
+  if(noiseBuffer)return noiseBuffer;
+  const c=getAC();
+  noiseBuffer=c.createBuffer(1,c.sampleRate*.06,c.sampleRate);
+  const d=noiseBuffer.getChannelData(0);
+  for(let i=0;i<d.length;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/d.length,2);
+  return noiseBuffer;
+}
+
+let lastSlapTime=0;
+function slapSound(intensity){
+  const now=performance.now();
+  if(now-lastSlapTime<30)return; // Throttle audio to max ~33/sec
+  lastSlapTime=now;
+  try{
+    const c=getAC(),t=c.currentTime;
+    const n=c.createBufferSource();n.buffer=getNoise();
+    const g=c.createGain();g.gain.setValueAtTime(.25+intensity*.12,t);
+    g.gain.exponentialRampToValueAtTime(.001,t+.08);
+    const hp=c.createBiquadFilter();hp.type='highpass';hp.frequency.value=800;
+    n.connect(hp);hp.connect(g);g.connect(c.destination);n.start();
+    // Thud
+    const o=c.createOscillator(),g2=c.createGain();
+    o.connect(g2);g2.connect(c.destination);
+    o.frequency.setValueAtTime(70+Math.random()*25,t);
+    o.frequency.exponentialRampToValueAtTime(20,t+.08);
+    g2.gain.setValueAtTime(.15+intensity*.08,t);
+    g2.gain.exponentialRampToValueAtTime(.001,t+.1);
+    o.start();o.stop(t+.1);
+  }catch(e){}
+}
+
+let lastScreamTime=0;
+function voiceScream(type){
+  const now=performance.now();
+  if(now-lastScreamTime<150)return; // Max ~6 screams/sec
+  lastScreamTime=now;
+  try{
+    const c=getAC(),t=c.currentTime;
+    const screams={
+      yelp:{f:400,dur:.2,mod:700,rise:true},
+      ouch:{f:300,dur:.28,mod:450,rise:false},
+      scream:{f:500,dur:.35,mod:900,rise:true},
+      whimper:{f:250,dur:.3,mod:280,rise:false},
+      cry:{f:350,dur:.4,mod:550,rise:true},
+      grunt:{f:150,dur:.15,mod:180,rise:false},
+      highyelp:{f:580,dur:.22,mod:1000,rise:true},
+      moan:{f:200,dur:.35,mod:350,rise:false},
+    };
+    const s=screams[type]||screams.yelp;
+    const o=c.createOscillator();o.type='sawtooth';
+    o.frequency.setValueAtTime(s.f+Math.random()*40,t);
+    if(s.rise){o.frequency.linearRampToValueAtTime(s.f+s.mod,t+s.dur*.3);o.frequency.linearRampToValueAtTime(s.f+s.mod*.3,t+s.dur)}
+    else{o.frequency.linearRampToValueAtTime(s.f-60,t+s.dur)}
+    const f1=c.createBiquadFilter();f1.type='bandpass';f1.frequency.value=700+Math.random()*300;f1.Q.value=4;
+    const g=c.createGain();g.gain.setValueAtTime(0,t);
+    g.gain.linearRampToValueAtTime(.07+Math.random()*.03,t+.02);
+    g.gain.linearRampToValueAtTime(0,t+s.dur);
+    o.connect(f1);f1.connect(g);g.connect(c.destination);
+    o.start();o.stop(t+s.dur+.02);
+  }catch(e){}
+}
+
+const screamTypes=['yelp','ouch','scream','whimper','cry','grunt','highyelp','moan'];
+let lastScrIdx=-1;
+function rndScream(){let i;do{i=Math.floor(Math.random()*screamTypes.length)}while(i===lastScrIdx);lastScrIdx=i;return screamTypes[i]}
+
+// ========== FACE DETECTION ==========
+let faceLandmarks=null,imgW,imgH,CW,CH;
+
+function detectFace(img){
+  const c=document.createElement('canvas');
+  const size=150;
+  const asp=img.naturalWidth/img.naturalHeight;
+  c.width=asp>=1?size:size*asp;c.height=asp>=1?size/asp:size;
+  const cx=c.getContext('2d');cx.drawImage(img,0,0,c.width,c.height);
+  const data=cx.getImageData(0,0,c.width,c.height).data;
+  const skinMap=[];
+  for(let y=0;y<c.height;y+=2)for(let x=0;x<c.width;x+=2){
+    const i=(y*c.width+x)*4;const r=data[i],g=data[i+1],b=data[i+2];
+    if((r>60&&g>40&&b>20&&r>g&&r>b&&r-b>12)||(r>45&&g>30&&b>15&&r>b&&g>b&&r-b>5&&Math.max(r,g,b)<200))
+      skinMap.push({x,y});
+  }
+  if(skinMap.length<10)return defaultLM(img.naturalWidth,img.naturalHeight);
+  let minX=Infinity,maxX=0,minY=Infinity,maxY=0;
+  const up=skinMap.filter(p=>p.y<c.height*.75);
+  const tgt=up.length>15?up:skinMap;
+  tgt.forEach(p=>{if(p.x<minX)minX=p.x;if(p.x>maxX)maxX=p.x;if(p.y<minY)minY=p.y;if(p.y>maxY)maxY=p.y});
+  const fW=maxX-minX,fH=maxY-minY,fCX=(minX+maxX)/2;
+  const sx=img.naturalWidth/c.width,sy=img.naturalHeight/c.height;
+  return{
+    leftEye:{x:(minX+fW*.3)*sx,y:(minY+fH*.33)*sy},
+    rightEye:{x:(minX+fW*.7)*sx,y:(minY+fH*.33)*sy},
+    nose:{x:fCX*sx,y:(minY+fH*.55)*sy},
+    mouth:{x:fCX*sx,y:(minY+fH*.72)*sy},
+    leftCheek:{x:(minX+fW*.15)*sx,y:(minY+fH*.55)*sy},
+    rightCheek:{x:(minX+fW*.85)*sx,y:(minY+fH*.55)*sy},
+    forehead:{x:fCX*sx,y:(minY+fH*.12)*sy},
   };
+}
+function defaultLM(w,h){
+  const cx=w/2,cy=h*.42;
+  return{leftEye:{x:cx-w*.12,y:cy-h*.03},rightEye:{x:cx+w*.12,y:cy-h*.03},nose:{x:cx,y:cy+h*.07},mouth:{x:cx,y:cy+h*.16},leftCheek:{x:cx-w*.2,y:cy+h*.05},rightCheek:{x:cx+w*.2,y:cy+h*.05},forehead:{x:cx,y:cy-h*.12}};
 }
 
 // ========== UPLOAD ==========
 const uScr=document.getElementById('uScr'),gm=document.getElementById('gm');
 const dz=document.getElementById('dz'),fin=document.getElementById('fin');
 const pv=document.getElementById('pv'),go=document.getElementById('go');
-const loadTxt=document.getElementById('loadTxt');
-const fi2=document.getElementById('fi2');
+const loadTxt=document.getElementById('loadTxt'),fi2=document.getElementById('fi2');
 let imgData=null;
 
 dz.onclick=()=>fin.click();
@@ -342,20 +328,13 @@ function loadF(f){
   if(!f.type.startsWith('image/'))return;
   const r=new FileReader();
   r.onload=e=>{
-    imgData=e.target.result;
-    pv.src=imgData;
-    dz.classList.add('has');
-    // Detect face
-    loadTxt.classList.add('show');
-    go.classList.remove('sh');
+    imgData=e.target.result;pv.src=imgData;dz.classList.add('has');
+    loadTxt.classList.add('show');go.classList.remove('sh');
     const img=new Image();
     img.onload=()=>{
-      faceLandmarks=detectFace(img);
-      imgW=img.naturalWidth; imgH=img.naturalHeight;
-      loadTxt.classList.remove('show');
-      loadTxt.textContent='✅ 얼굴 인식 완료!';
-      loadTxt.classList.add('show');
-      setTimeout(()=>loadTxt.classList.remove('show'),1500);
+      faceLandmarks=detectFace(img);imgW=img.naturalWidth;imgH=img.naturalHeight;
+      loadTxt.classList.remove('show');loadTxt.textContent='✅ 얼굴 인식 완료!';
+      loadTxt.classList.add('show');setTimeout(()=>loadTxt.classList.remove('show'),1200);
       go.classList.add('sh');
     };
     img.src=imgData;
@@ -363,149 +342,29 @@ function loadF(f){
   r.readAsDataURL(f);
 }
 
-go.onclick=()=>{
-  if(!imgData)return;
-  fi2.src=imgData;
-  uScr.classList.add('hide');
-  gm.classList.add('on');
-  setTimeout(()=>{initC();computeScale()},60);
-};
-document.getElementById('chBtn').onclick=()=>{gm.classList.remove('on');uScr.classList.remove('hide');resetAll();loadTxt.textContent='🔍 얼굴 인식 중...';};
+go.onclick=()=>{if(!imgData)return;fi2.src=imgData;uScr.classList.add('hide');gm.classList.add('on');setTimeout(()=>{initC();computeScale()},50)};
+document.getElementById('chBtn').onclick=()=>{gm.classList.remove('on');uScr.classList.remove('hide');resetAll();loadTxt.textContent='🔍 얼굴 인식 중...'};
 
 // ========== CANVAS ==========
 const cB=document.getElementById('cB'),xB=cB.getContext('2d');
 const cS=document.getElementById('cS'),xS=cS.getContext('2d');
-const cW=document.getElementById('cW'),xW=cW.getContext('2d');
 const fw=document.getElementById('fw');
 
 function initC(){
   CW=fw.offsetWidth;CH=fw.offsetHeight;
-  [cB,cS,cW].forEach(c=>{c.width=CW*2;c.height=CH*2;c.style.width=CW+'px';c.style.height=CH+'px';c.getContext('2d').scale(2,2)});
-  xB.clearRect(0,0,CW,CH);xS.clearRect(0,0,CW,CH);xW.clearRect(0,0,CW,CH);
+  [cB,cS].forEach(c=>{c.width=CW*2;c.height=CH*2;c.style.width=CW+'px';c.style.height=CH+'px';c.getContext('2d').scale(2,2)});
+  xB.clearRect(0,0,CW,CH);xS.clearRect(0,0,CW,CH);
 }
 function computeScale(){
-  // Map face landmarks from image coords to display coords
   if(!faceLandmarks)return;
-  scaleX=CW/imgW; scaleY=CH/imgH;
-  // Account for object-fit:cover
-  const imgAspect=imgW/imgH, contAspect=CW/CH;
-  if(imgAspect>contAspect){
-    // Image wider: height fills, width cropped
-    const displayH=CH, displayW=CH*imgAspect;
-    scaleY=CH/imgH; scaleX=scaleY;
-    const offsetX=(displayW-CW)/2;
-    // Adjust: displayX = imgX * scale - offsetX
-    faceLandmarks._offsetX=offsetX; faceLandmarks._offsetY=0; faceLandmarks._scale=scaleY;
-  } else {
-    const displayW=CW, displayH=CW/imgAspect;
-    scaleX=CW/imgW; scaleY=scaleX;
-    const offsetY=(displayH-CH)/2;
-    faceLandmarks._offsetX=0; faceLandmarks._offsetY=offsetY; faceLandmarks._scale=scaleX;
+  const imgAsp=imgW/imgH,contAsp=CW/CH;
+  if(imgAsp>contAsp){
+    const s=CH/imgH;faceLandmarks._s=s;faceLandmarks._ox=(CH*imgAsp-CW)/2;faceLandmarks._oy=0;
+  }else{
+    const s=CW/imgW;faceLandmarks._s=s;faceLandmarks._ox=0;faceLandmarks._oy=(CW/imgAsp-CH)/2;
   }
 }
-function toDisplay(pt){
-  if(!faceLandmarks)return pt;
-  const s=faceLandmarks._scale||1;
-  const ox=faceLandmarks._offsetX||0;
-  const oy=faceLandmarks._offsetY||0;
-  return{x:pt.x*s-ox, y:pt.y*s-oy};
-}
-
-// ========== SOUND ENGINE ==========
-let audioCtx;
-function getCtx(){
-  if(!audioCtx) audioCtx=new (window.AudioContext||window.webkitAudioContext)();
-  return audioCtx;
-}
-
-function slapSound(intensity){
-  const c=getCtx(),t=c.currentTime;
-  // Noise burst
-  const buf=c.createBuffer(1,c.sampleRate*.07,c.sampleRate);
-  const d=buf.getChannelData(0);
-  for(let i=0;i<d.length;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/d.length,1.8);
-  const n=c.createBufferSource();n.buffer=buf;
-  const gn=c.createGain();gn.gain.setValueAtTime(.3+intensity*.15,t);
-  const hp=c.createBiquadFilter();hp.type='highpass';hp.frequency.value=700+intensity*300;
-  n.connect(hp);hp.connect(gn);gn.connect(c.destination);n.start();
-  // Thud
-  const o=c.createOscillator(),g=c.createGain();
-  o.connect(g);g.connect(c.destination);
-  o.frequency.setValueAtTime(70+Math.random()*30,t);
-  o.frequency.exponentialRampToValueAtTime(20,t+.12);
-  g.gain.setValueAtTime(.18+intensity*.1,t);
-  g.gain.exponentialRampToValueAtTime(.001,t+.13);
-  o.start();o.stop(t+.13);
-  // Skin slap (mid freq)
-  const o2=c.createOscillator(),g2=c.createGain();
-  o2.connect(g2);g2.connect(c.destination);
-  o2.type='triangle';
-  o2.frequency.setValueAtTime(300+Math.random()*200,t);
-  o2.frequency.exponentialRampToValueAtTime(80,t+.06);
-  g2.gain.setValueAtTime(.12+intensity*.08,t);
-  g2.gain.exponentialRampToValueAtTime(.001,t+.08);
-  o2.start();o2.stop(t+.08);
-}
-
-// Voice/scream synthesizer using formant synthesis
-function voiceScream(type){
-  const c=getCtx(),t=c.currentTime;
-
-  // Different scream types
-  const screams={
-    yelp:{f:400,dur:.25,mod:800,rise:true},    // 악!
-    ouch:{f:300,dur:.35,mod:500,rise:false},    // 아야!
-    scream:{f:500,dur:.5,mod:1000,rise:true},   // 으아악!
-    whimper:{f:250,dur:.4,mod:300,rise:false},  // 으으...
-    cry:{f:350,dur:.6,mod:600,rise:true},       // 살려줘!
-    grunt:{f:150,dur:.2,mod:200,rise:false},    // 퍽!
-    highyelp:{f:600,dur:.3,mod:1200,rise:true}, // 끼야!
-    moan:{f:200,dur:.5,mod:400,rise:false},     // 으으으
-  };
-  const s=screams[type]||screams.yelp;
-
-  // Base voice oscillator
-  const o=c.createOscillator();
-  o.type='sawtooth';
-  o.frequency.setValueAtTime(s.f+Math.random()*50,t);
-  if(s.rise){
-    o.frequency.linearRampToValueAtTime(s.f+s.mod,t+s.dur*.3);
-    o.frequency.linearRampToValueAtTime(s.f+s.mod*.3,t+s.dur);
-  } else {
-    o.frequency.linearRampToValueAtTime(s.f-80,t+s.dur);
-  }
-
-  // Vibrato
-  const vib=c.createOscillator();
-  const vibG=c.createGain();
-  vib.frequency.value=5+Math.random()*3;
-  vibG.gain.value=15+Math.random()*10;
-  vib.connect(vibG);vibG.connect(o.frequency);
-  vib.start();vib.stop(t+s.dur+.1);
-
-  // Formant filters (simulate vowels)
-  const f1=c.createBiquadFilter();f1.type='bandpass';f1.frequency.value=700+Math.random()*300;f1.Q.value=5;
-  const f2=c.createBiquadFilter();f2.type='bandpass';f2.frequency.value=1200+Math.random()*500;f2.Q.value=5;
-
-  // Volume envelope
-  const g=c.createGain();
-  g.gain.setValueAtTime(0,t);
-  g.gain.linearRampToValueAtTime(.08+Math.random()*.04,t+.03);
-  g.gain.linearRampToValueAtTime(.06,t+s.dur*.5);
-  g.gain.linearRampToValueAtTime(0,t+s.dur);
-
-  o.connect(f1);f1.connect(f2);f2.connect(g);g.connect(c.destination);
-  o.start();o.stop(t+s.dur+.05);
-}
-
-const screamTypes=['yelp','ouch','scream','whimper','cry','grunt','highyelp','moan'];
-let lastScreamIdx=-1;
-function randomScream(){
-  let idx;
-  do{idx=Math.floor(Math.random()*screamTypes.length)}while(idx===lastScreamIdx);
-  lastScreamIdx=idx;
-  return screamTypes[idx];
-}
+function toD(pt){if(!faceLandmarks)return pt;return{x:pt.x*faceLandmarks._s-faceLandmarks._ox,y:pt.y*faceLandmarks._s-faceLandmarks._oy}}
 
 // ========== GAME STATE ==========
 const tn=document.getElementById('tn'),flx=document.getElementById('flx'),sf=document.getElementById('sf');
@@ -514,286 +373,203 @@ const cb=document.getElementById('cb'),cfx=document.getElementById('cfx'),ctx2=d
 const sg=document.getElementById('sg');
 
 let slaps=0,combo=0,maxC=0,dmg=0,cT=null;
-let leftHits=0,rightHits=0;
 
 const txts=['찰싹!','퍽!','딱!','탁!','아야!','으악!','헉!','악!','끼야악!','으으...'];
-const eyeTxts=['눈을 맞았다! 👁️','아 눈!!','시야가...!'];
-const noseTxts=['코가! 🩸','코피 터진다!','으악 코!'];
-const mouthTxts=['입술이...!','이빨이!','으으 입!'];
-const cheekTxts=['뺨을 후려!','찰싹!!','빠악!'];
-const foreheadTxts=['이마를 강타!','머리가 띵!','두개골이...!'];
-const bigTxts=['콤보!','대단해!','무자비!','학대!','전설!'];
-const stages=[
-  {t:6,txt:'빨개지는 중...',c:'s1'},
-  {t:16,txt:'멍이 생기기 시작!',c:'s1'},
-  {t:30,txt:'퉁퉁 부어오름!',c:'s2'},
-  {t:45,txt:'피가 나기 시작...',c:'s2'},
-  {t:60,txt:'심각한 멍투성이!',c:'s3'},
-  {t:76,txt:'만신창이...',c:'s4'},
-  {t:90,txt:'제발 그만해줘...😭',c:'s4'},
-];
+const eyeT=['눈을 맞았다!👁️','아 눈!!','시야가...!'];
+const noseT=['코가!🩸','코피 터진다!','으악 코!'];
+const mouthT=['입술이...!','이빨이!','으으 입!'];
+const cheekT=['뺨을 후려!','찰싹!!','빠악!'];
+const fheadT=['이마를 강타!','머리가 띵!','두개골이...!'];
+const bigT=['콤보!','대단해!','무자비!','학대!','전설!'];
+const stages=[{t:6,txt:'빨개지는 중...',c:'s1'},{t:16,txt:'멍이 생기기 시작!',c:'s1'},{t:30,txt:'퉁퉁 부어오름!',c:'s2'},{t:45,txt:'피가 나기 시작...',c:'s2'},{t:60,txt:'심각한 멍투성이!',c:'s3'},{t:76,txt:'만신창이...',c:'s4'},{t:90,txt:'제발 그만해줘...😭',c:'s4'}];
 
-// ========== HIT DETECTION ==========
-function getHitPart(x,y){
-  if(!faceLandmarks)return{part:'face',label:'얼굴'};
-  const pts={
-    leftEye:toDisplay(faceLandmarks.leftEye),
-    rightEye:toDisplay(faceLandmarks.rightEye),
-    nose:toDisplay(faceLandmarks.nose),
-    mouth:toDisplay(faceLandmarks.mouth),
-    leftCheek:toDisplay(faceLandmarks.leftCheek),
-    rightCheek:toDisplay(faceLandmarks.rightCheek),
-    forehead:toDisplay(faceLandmarks.forehead),
-    chin:toDisplay(faceLandmarks.chin),
-  };
-
-  const dist=(a,b)=>Math.sqrt((a.x-b.x)**2+(a.y-b.y)**2);
-  const threshold=CW*0.12;
-
-  const d=[
-    {part:'leftEye',d:dist({x,y},pts.leftEye)},
-    {part:'rightEye',d:dist({x,y},pts.rightEye)},
-    {part:'nose',d:dist({x,y},pts.nose)},
-    {part:'mouth',d:dist({x,y},pts.mouth)},
-    {part:'leftCheek',d:dist({x,y},pts.leftCheek)},
-    {part:'rightCheek',d:dist({x,y},pts.rightCheek)},
-    {part:'forehead',d:dist({x,y},pts.forehead)},
-  ].sort((a,b)=>a.d-b.d);
-
-  const closest=d[0];
-  if(closest.d>threshold*2)return{part:'face',label:'얼굴'};
-
-  const labels={
-    leftEye:'왼쪽 눈 👁️',rightEye:'오른쪽 눈 👁️',
-    nose:'코 👃',mouth:'입 👄',
-    leftCheek:'왼뺨',rightCheek:'오른뺨',
-    forehead:'이마',
-  };
-  return{part:closest.part,label:labels[closest.part]||'얼굴'};
+function getHit(x,y){
+  if(!faceLandmarks)return{p:'face',l:'얼굴'};
+  const pts={lE:toD(faceLandmarks.leftEye),rE:toD(faceLandmarks.rightEye),n:toD(faceLandmarks.nose),m:toD(faceLandmarks.mouth),lC:toD(faceLandmarks.leftCheek),rC:toD(faceLandmarks.rightCheek),f:toD(faceLandmarks.forehead)};
+  const dist=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y);
+  const th=CW*.12;
+  const d=[{p:'leftEye',d:dist({x,y},pts.lE)},{p:'rightEye',d:dist({x,y},pts.rE)},{p:'nose',d:dist({x,y},pts.n)},{p:'mouth',d:dist({x,y},pts.m)},{p:'leftCheek',d:dist({x,y},pts.lC)},{p:'rightCheek',d:dist({x,y},pts.rC)},{p:'forehead',d:dist({x,y},pts.f)}].sort((a,b)=>a.d-b.d);
+  if(d[0].d>th*2)return{p:'face',l:'얼굴'};
+  const lb={leftEye:'왼쪽 눈👁️',rightEye:'오른쪽 눈👁️',nose:'코👃',mouth:'입👄',leftCheek:'왼뺨',rightCheek:'오른뺨',forehead:'이마'};
+  return{p:d[0].p,l:lb[d[0].p]||'얼굴'};
 }
-
-function getPartText(part){
-  if(part.includes('Eye'))return eyeTxts[Math.floor(Math.random()*eyeTxts.length)];
-  if(part==='nose')return noseTxts[Math.floor(Math.random()*noseTxts.length)];
-  if(part==='mouth')return mouthTxts[Math.floor(Math.random()*mouthTxts.length)];
-  if(part.includes('Cheek'))return cheekTxts[Math.floor(Math.random()*cheekTxts.length)];
-  if(part==='forehead')return foreheadTxts[Math.floor(Math.random()*foreheadTxts.length)];
+function partTxt(p){
+  if(p.includes('Eye'))return eyeT[Math.floor(Math.random()*eyeT.length)];
+  if(p==='nose')return noseT[Math.floor(Math.random()*noseT.length)];
+  if(p==='mouth')return mouthT[Math.floor(Math.random()*mouthT.length)];
+  if(p.includes('Cheek'))return cheekT[Math.floor(Math.random()*cheekT.length)];
+  if(p==='forehead')return fheadT[Math.floor(Math.random()*fheadT.length)];
   return txts[Math.floor(Math.random()*txts.length)];
 }
-
-function getPartScream(part){
-  if(part.includes('Eye'))return Math.random()>.5?'highyelp':'scream';
-  if(part==='nose')return Math.random()>.5?'yelp':'cry';
-  if(part==='mouth')return Math.random()>.5?'grunt':'ouch';
-  if(part.includes('Cheek'))return Math.random()>.5?'yelp':'ouch';
-  if(part==='forehead')return Math.random()>.5?'scream':'grunt';
-  return randomScream();
+function partScr(p){
+  if(p.includes('Eye'))return Math.random()>.5?'highyelp':'scream';
+  if(p==='nose')return Math.random()>.5?'yelp':'cry';
+  if(p==='mouth')return Math.random()>.5?'grunt':'ouch';
+  if(p.includes('Cheek'))return Math.random()>.5?'yelp':'ouch';
+  if(p==='forehead')return Math.random()>.5?'scream':'grunt';
+  return rndScream();
 }
 
-// ========== BRUISE RENDERING ==========
-function renderBruise(x,y,partName){
-  const intensity=.1+dmg/130;
-  const layers=3+Math.floor(dmg/18);
-  const isEye=partName.includes('Eye');
-  const isNose=partName==='nose';
-
+// ========== BRUISE (optimized: fewer layers) ==========
+function renderBruise(x,y,pn){
+  const int=.1+dmg/140;
+  const layers=2+Math.floor(dmg/25); // Reduced layers
+  const isEye=pn.includes('Eye'),isNose=pn==='nose';
   for(let l=0;l<layers;l++){
-    const sz=(10+Math.random()*16+(dmg/100)*24)*(1-l*.1);
-    const ox=(Math.random()-.5)*12,oy=(Math.random()-.5)*12;
-    let r,g,b;
-    const ph=dmg/100;
-    if(ph<.2){r=210+Math.random()*25;g=95+Math.random()*25;b=95+Math.random()*25;}
-    else if(ph<.45){r=145+Math.random()*25;g=45+Math.random()*20;b=125+Math.random()*25;}
-    else if(ph<.7){r=85+Math.random()*25;g=25+Math.random()*18;b=95+Math.random()*35;}
-    else{r=45+Math.random()*25;g=12+Math.random()*12;b=55+Math.random()*35;}
-
-    // Eyes get blacker faster
-    if(isEye){r=Math.max(r-40,20);g=Math.max(g-20,5);b+=20;}
-    // Nose gets redder
-    if(isNose){r=Math.min(r+30,255);g=Math.max(g-10,10);}
-
+    const sz=(10+Math.random()*14+(dmg/100)*20)*(1-l*.12);
+    const ox=(Math.random()-.5)*10,oy=(Math.random()-.5)*10;
+    let r,g,b;const ph=dmg/100;
+    if(ph<.2){r=210+Math.random()*20;g=95+Math.random()*20;b=95+Math.random()*20}
+    else if(ph<.45){r=140+Math.random()*20;g=45+Math.random()*15;b=125+Math.random()*20}
+    else if(ph<.7){r=85+Math.random()*20;g=25+Math.random()*15;b=95+Math.random()*30}
+    else{r=45+Math.random()*20;g=12+Math.random()*10;b=55+Math.random()*30}
+    if(isEye){r=Math.max(r-35,20);g=Math.max(g-18,5);b+=15}
+    if(isNose){r=Math.min(r+25,255);g=Math.max(g-8,10)}
     const gr=xB.createRadialGradient(x+ox,y+oy,0,x+ox,y+oy,sz);
-    gr.addColorStop(0,`rgba(${r},${g},${b},${intensity})`);
-    gr.addColorStop(.35,`rgba(${r},${g},${b},${intensity*.6})`);
-    gr.addColorStop(.65,`rgba(${r},${g},${b},${intensity*.2})`);
+    gr.addColorStop(0,`rgba(${r},${g},${b},${int})`);
+    gr.addColorStop(.4,`rgba(${r},${g},${b},${int*.55})`);
     gr.addColorStop(1,`rgba(${r},${g},${b},0)`);
-    xB.save();
-    xB.translate(x+ox,y+oy);xB.rotate((Math.random()-.5)*1.3);
-    xB.scale(1,.6+Math.random()*.35);xB.translate(-(x+ox),-(y+oy));
-    xB.fillStyle=gr;xB.beginPath();xB.ellipse(x+ox,y+oy,sz,sz*.7,0,0,Math.PI*2);xB.fill();
-    xB.restore();
+    xB.save();xB.translate(x+ox,y+oy);xB.rotate((Math.random()-.5)*1.2);
+    xB.scale(1,.6+Math.random()*.3);xB.translate(-(x+ox),-(y+oy));
+    xB.fillStyle=gr;xB.beginPath();xB.ellipse(x+ox,y+oy,sz,sz*.7,0,0,Math.PI*2);xB.fill();xB.restore();
   }
-
-  // Dark overlay
-  if(dmg>12){
-    const ds=xS.createRadialGradient(x,y,0,x,y,16+(dmg/100)*14);
-    ds.addColorStop(0,`rgba(35,8,35,${.05+dmg/350})`);
-    ds.addColorStop(.5,`rgba(25,4,25,${.025+dmg/500})`);
-    ds.addColorStop(1,'rgba(25,4,25,0)');
-    xS.fillStyle=ds;xS.beginPath();xS.ellipse(x,y,20+(dmg/100)*14,14+(dmg/100)*10,0,0,Math.PI*2);xS.fill();
-  }
-  // Swelling
-  if(dmg>25){
-    const sw=xW.createRadialGradient(x,y-3,0,x,y,12+(dmg/100)*10);
-    sw.addColorStop(0,`rgba(255,225,205,${.1+dmg/450})`);
-    sw.addColorStop(.35,`rgba(255,195,175,${.05+dmg/550})`);
-    sw.addColorStop(1,'rgba(255,195,175,0)');
-    xW.fillStyle=sw;xW.beginPath();xW.ellipse(x,y-3,14+(dmg/100)*9,9+(dmg/100)*6,0,0,Math.PI*2);xW.fill();
+  if(dmg>15){
+    const ds=xS.createRadialGradient(x,y,0,x,y,15+(dmg/100)*12);
+    ds.addColorStop(0,`rgba(35,8,35,${.04+dmg/400})`);ds.addColorStop(1,'rgba(35,8,35,0)');
+    xS.fillStyle=ds;xS.beginPath();xS.ellipse(x,y,18+(dmg/100)*12,12+(dmg/100)*8,0,0,Math.PI*2);xS.fill();
   }
 }
 
-// ========== EFFECTS ==========
-function spawnBlood(x,y,n){
-  for(let i=0;i<n;i++){
-    const b=document.createElement('div');b.className='bl';
-    const sz=2+Math.random()*5;b.style.width=sz+'px';b.style.height=sz+'px';
-    b.style.left=x+'px';b.style.top=y+'px';
-    const a=Math.random()*Math.PI*2,d=25+Math.random()*55+(dmg/100)*35;
-    fw.appendChild(b);
-    requestAnimationFrame(()=>{
-      b.style.transition='all .45s cubic-bezier(.15,.75,.25,1)';
-      b.style.transform=`translate(${Math.cos(a)*d}px,${Math.sin(a)*d-15}px) scale(.2)`;
-      b.style.opacity='0';
-    });
-    setTimeout(()=>b.remove(),500);
-  }
-}
+// ========== MAIN HIT ==========
+let lastHitTime=0;
+const MIN_HIT_INTERVAL=25; // Max ~40 hits/sec
 
 fw.addEventListener('click',e=>{e.preventDefault();doSlap(e.clientX,e.clientY)});
 fw.addEventListener('touchstart',e=>{e.preventDefault();for(const t of e.changedTouches)doSlap(t.clientX,t.clientY)},{passive:false});
 
 function doSlap(cx,cy){
+  const now=performance.now();
+  if(now-lastHitTime<MIN_HIT_INTERVAL)return;
+  lastHitTime=now;
+
   const rect=fw.getBoundingClientRect();
   const x=cx-rect.left,y=cy-rect.top;
+  if(x<0||y<0||x>CW||y>CH)return;
   const isLeft=x<CW/2;
 
   slaps++;combo++;
   hS.textContent=slaps;
-  if(isLeft)leftHits++;else rightHits++;
   dmg=Math.min(dmg+0.1+(combo>3?combo*.02:0),100);
-  if(combo>maxC){maxC=combo;hC.textContent=maxC;}
+  if(combo>maxC){maxC=combo;hC.textContent=maxC}
 
   // Combo
   clearTimeout(cT);
   cb.classList.add('on');ctx2.classList.add('on');
   cfx.style.width=Math.min(combo*10,100)+'%';
-  ctx2.textContent=combo>=5?`🔥 ${combo}콤보! ${bigTxts[Math.min(Math.floor(combo/5)-1,bigTxts.length-1)]}`:`${combo}콤보`;
+  ctx2.textContent=combo>=5?`🔥 ${combo}콤보! ${bigT[Math.min(Math.floor(combo/5)-1,bigT.length-1)]}`:`${combo}콤보`;
   cT=setTimeout(()=>{combo=0;cb.classList.remove('on');ctx2.classList.remove('on');cfx.style.width='0%'},1100);
 
-  // Hit detection
-  const hit=getHitPart(x,y);
+  const hit=getHit(x,y);
   const intensity=Math.min(dmg/100,1);
 
-  // === SOUNDS ===
+  // Sound (throttled internally)
   slapSound(intensity);
-  // Voice scream (not every hit, increases with damage)
-  if(Math.random()<.4+dmg/200||combo>=3){
-    setTimeout(()=>voiceScream(getPartScream(hit.part)),30+Math.random()*40);
-  }
-  // Extra scream on heavy combo
-  if(combo>=8&&Math.random()<.6){
-    setTimeout(()=>voiceScream('scream'),80);
-  }
+  if(Math.random()<.35+dmg/250||combo>=4)setTimeout(()=>voiceScream(partScr(hit.p)),20+Math.random()*30);
 
   // Photo recoil
-  const deg=7+dmg/12+combo;
-  const tx=8+dmg/8;
-  fi2.style.filter=`brightness(${1-dmg/280}) saturate(${1-dmg/350}) contrast(${1+dmg/450})`;
-  fi2.style.transform=isLeft?`rotate(${deg}deg) translateX(${tx}px)`:`rotate(-${deg}deg) translateX(-${tx}px)`;
-  setTimeout(()=>{fi2.style.transform=''},75);
+  const deg=6+dmg/15+Math.min(combo,10);
+  fi2.style.filter=`brightness(${1-dmg/300}) saturate(${1-dmg/400})`;
+  fi2.style.transform=isLeft?`rotate(${deg}deg) translateX(${8+dmg/12}px)`:`rotate(-${deg}deg) translateX(-${8+dmg/12}px)`;
+  setTimeout(()=>{fi2.style.transform=''},60);
 
-  // Shake + flash
+  // Shake
   fw.classList.remove('shk');void fw.offsetWidth;fw.classList.add('shk');
-  flx.style.background=`radial-gradient(circle at ${x/CW*100}% ${y/CH*100}%,rgba(255,255,255,.65),transparent 50%)`;
-  flx.classList.add('on');setTimeout(()=>flx.classList.remove('on'),55);
-  if(combo>=3||dmg>25){sf.classList.add('on');setTimeout(()=>sf.classList.remove('on'),70);}
+
+  // Flash
+  flx.style.background=`radial-gradient(circle at ${x/CW*100}% ${y/CH*100}%,rgba(255,255,255,.55),transparent 45%)`;
+  flx.classList.add('on');setTimeout(()=>flx.classList.remove('on'),40);
+  if(combo>=3||dmg>25){sf.classList.add('on');setTimeout(()=>sf.classList.remove('on'),50)}
 
   // Bruise
-  renderBruise(x,y,hit.part);
-  if(dmg>18)renderBruise(x+(Math.random()-.5)*28,y+(Math.random()-.5)*28,hit.part);
+  renderBruise(x,y,hit.p);
+  if(dmg>20)renderBruise(x+(Math.random()-.5)*24,y+(Math.random()-.5)*24,hit.p);
 
-  // Blood
-  if(dmg>32||(hit.part==='nose'&&dmg>15))spawnBlood(x,y,Math.floor(2+dmg/12));
-  // Blood drip from nose
-  if(hit.part==='nose'&&dmg>20){
-    const np=toDisplay(faceLandmarks.nose);
-    for(let i=0;i<2;i++){
-      const dr=document.createElement('div');dr.className='bl';
-      dr.style.width='3px';dr.style.height='3px';dr.style.left=(np.x+Math.random()*8-4)+'px';dr.style.top=(np.y+10)+'px';
-      fw.appendChild(dr);
-      requestAnimationFrame(()=>{
-        dr.style.transition=`all ${.8+Math.random()*.5}s ease-in`;
-        dr.style.transform=`translateY(${60+Math.random()*50}px)`;
-        dr.style.height='14px';dr.style.borderRadius='40%';dr.style.opacity='0';
-      });
-      setTimeout(()=>dr.remove(),1400);
+  // === POOLED EFFECTS ===
+  // Hand
+  const h=handPool.get();
+  animateFx(h,fw,x-35,y-35,'fx-hand',isLeft?'👋':'🤚',{transform:'scale(.6) translateY(-20px)',opacity:'0'},300);
+
+  // Text
+  const ft=textPool.get();
+  const txt=dmg>86?'제발 그만😭':combo>=5?bigT[Math.min(Math.floor(combo/5)-1,bigT.length-1)]:partTxt(hit.p);
+  animateFx(ft,fw,x-28,y-30,'fx-text',txt,{transform:'translateY(-80px) scale(1.15)',opacity:'0'},500);
+
+  // Label
+  const lb=labelPool.get();
+  animateFx(lb,fw,x-15,y+18,'fx-label',hit.l,{transform:'translateY(-35px)',opacity:'0'},400);
+
+  // Ring
+  const rn=ringPool.get();
+  rn.className='fx fx-ring';rn.textContent='';rn.style.left=x+'px';rn.style.top=y+'px';
+  rn.style.opacity='1';rn.style.width='8px';rn.style.height='8px';rn.style.marginLeft='0';rn.style.marginTop='0';
+  if(!rn.parentNode)fw.appendChild(rn);
+  requestAnimationFrame(()=>{
+    rn.style.transition='all .3s ease-out';
+    rn.style.width='100px';rn.style.height='100px';rn.style.marginLeft='-50px';rn.style.marginTop='-50px';
+    rn.style.opacity='0';rn.style.borderWidth='1px';
+  });
+  setTimeout(()=>{rn.style.opacity='0';rn.style.transition=''},350);
+
+  // Stars (max 3)
+  const starCount=Math.min(2+Math.floor(combo/4),3);
+  for(let i=0;i<starCount;i++){
+    const s=starPool.get();
+    s.style.fontSize=(15+Math.random()*10)+'px';
+    const a=Math.random()*Math.PI*2,d=30+Math.random()*35;
+    animateFx(s,fw,x,y,'fx-star',dmg>50?'💫':'⭐',{transform:`translate(${Math.cos(a)*d}px,${Math.sin(a)*d}px) scale(1.2)`,opacity:'0'},350);
+  }
+
+  // Blood (pooled, max 3 particles)
+  if(dmg>35||(hit.p==='nose'&&dmg>15)){
+    const bc=Math.min(Math.floor(1+dmg/30),3);
+    for(let i=0;i<bc;i++){
+      const b=bloodPool.get();
+      const sz=2+Math.random()*4;
+      b.style.width=sz+'px';b.style.height=sz+'px';
+      const a=Math.random()*Math.PI*2,d=20+Math.random()*40;
+      animateFx(b,fw,x,y,'fx-blood','',{transform:`translate(${Math.cos(a)*d}px,${Math.sin(a)*d-10}px) scale(.2)`,opacity:'0'},350);
     }
   }
 
-  // Impact ring
-  const ir=document.createElement('div');ir.className='ir';ir.style.left=x+'px';ir.style.top=y+'px';
-  fw.appendChild(ir);setTimeout(()=>ir.remove(),400);
-
   // HUD
   hD.textContent=dmg<1?dmg.toFixed(2)+'%':dmg<10?dmg.toFixed(1)+'%':Math.round(dmg)+'%';
-  tn.style.background=`rgba(150,25,25,${dmg/260})`;
-  if(dmg>38)fw.classList.add('gl');else fw.classList.remove('gl');
+  tn.style.background=`rgba(150,25,25,${dmg/280})`;
+  if(dmg>38)fw.classList.add('gl');
   if(dmg>50)document.getElementById('b1').style.opacity='1';
   if(dmg>68)document.getElementById('b2').style.opacity='1';
   if(dmg>85)document.getElementById('b3').style.opacity='1';
   let si=null;
-  for(let i=stages.length-1;i>=0;i--){if(dmg>=stages[i].t){si=stages[i];break;}}
-  if(si){sg.textContent=si.text;sg.className='sg sh '+si.c;}
-
-  // Part label
-  const pl=document.createElement('div');pl.className='part-label';
-  pl.textContent=hit.label;pl.style.left=(x-20)+'px';pl.style.top=(y+20)+'px';
-  fw.appendChild(pl);
-
-  // Hand
-  const h=document.createElement('div');h.className='hp';h.textContent=isLeft?'👋':'🤚';
-  h.style.left=(x-38)+'px';h.style.top=(y-38)+'px';fw.appendChild(h);
-
-  // Text
-  const ft=document.createElement('div');ft.className='ftx';
-  ft.textContent=dmg>86?'제발 그만😭':combo>=5?bigTxts[Math.min(Math.floor(combo/5)-1,bigTxts.length-1)]:getPartText(hit.part);
-  ft.style.left=(x-30)+'px';ft.style.top=(y-35)+'px';fw.appendChild(ft);
-
-  // Stars
-  for(let i=0;i<3+Math.floor(combo/2);i++){
-    const s=document.createElement('div');s.className='st';
-    s.textContent=dmg>50?'💫':'⭐';s.style.fontSize=(16+Math.random()*12)+'px';
-    s.style.left=x+'px';s.style.top=y+'px';
-    const a=Math.random()*Math.PI*2,d=35+Math.random()*45;
-    fw.appendChild(s);
-    requestAnimationFrame(()=>{
-      s.style.transition='all .45s ease-out';
-      s.style.transform=`translate(${Math.cos(a)*d}px,${Math.sin(a)*d}px) scale(1.3) rotate(${Math.random()*360}deg)`;
-      s.style.opacity='0';
-    });
-    setTimeout(()=>s.remove(),500);
-  }
-
-  setTimeout(()=>{h.remove();ft.remove();pl.remove();fw.classList.remove('shk')},250);
+  for(let i=stages.length-1;i>=0;i--){if(dmg>=stages[i].t){si=stages[i];break}}
+  if(si){sg.textContent=si.txt;sg.className='sg sh '+si.c}
 }
 
 // ========== RESET ==========
 function resetAll(){
-  slaps=0;combo=0;maxC=0;dmg=0;leftHits=0;rightHits=0;
+  slaps=0;combo=0;maxC=0;dmg=0;
   hS.textContent='0';hC.textContent='0';hD.textContent='0%';
-  if(CW){xB.clearRect(0,0,CW,CH);xS.clearRect(0,0,CW,CH);xW.clearRect(0,0,CW,CH);}
+  if(CW){xB.clearRect(0,0,CW,CH);xS.clearRect(0,0,CW,CH)}
   tn.style.background='rgba(150,25,25,0)';
   fi2.style.filter='';fi2.style.transform='';
   fw.classList.remove('gl');
   document.getElementById('b1').style.opacity='0';
   document.getElementById('b2').style.opacity='0';
   document.getElementById('b3').style.opacity='0';
-  fw.querySelectorAll('.bl,.hp,.ftx,.st,.ir,.part-label').forEach(e=>e.remove());
+  // Hide all pooled elements
+  [handPool,textPool,starPool,bloodPool,ringPool,labelPool].forEach(pool=>pool.pool.forEach(el=>el.style.opacity='0'));
   sg.className='sg';cb.classList.remove('on');ctx2.classList.remove('on');
 }
 document.getElementById('hlBtn').onclick=e=>{e.stopPropagation();resetAll();initC()};
-window.addEventListener('resize',()=>{if(gm.classList.contains('on')){initC();computeScale();}});
-// Prevent zoom/double-tap everywhere
+window.addEventListener('resize',()=>{if(gm.classList.contains('on')){initC();computeScale()}});
 document.addEventListener('dblclick',e=>e.preventDefault());
 document.addEventListener('gesturestart',e=>e.preventDefault());
 document.addEventListener('gesturechange',e=>e.preventDefault());
