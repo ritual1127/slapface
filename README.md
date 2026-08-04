@@ -4,10 +4,9 @@
 
 ## 실행
 
-```bash
+
 # 그냥 브라우저로 열면 됩니다
-open index.html
-```
+https://ritual1127.github.io/slapface/
 
 빌드도, npm도, 서버도 필요 없습니다.
 
